@@ -18,6 +18,7 @@ import {
   Asset,
   CreateOrderParams,
   DepositParams,
+  FulfillOrderManyParams,
   GetOrdersParams,
   GetTradeOrderEventsParams,
   MarketCreateEvent,
@@ -86,6 +87,13 @@ export class SparkOrderbook {
       buyOrderId,
       this.getApiOptions(),
     );
+  };
+
+  fulfillOrderMany = async (
+    deposit: DepositParams,
+    order: FulfillOrderManyParams,
+  ): Promise<WriteTransactionResponse> => {
+    return this.write.fulfillOrderMany(deposit, order, this.getApiOptions());
   };
 
   mintToken = async (
